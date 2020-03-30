@@ -1,0 +1,103 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator"
+        mc:Ignorable="d"
+        Title="Calculator" Height="460" Width="320" MinHeight="320" MinWidth="240" WindowStartupLocation="CenterScreen">
+    
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="#222" />
+            <Setter Property="Background" Value="#fff" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Roboto" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="Transparent" BorderThickness="1" CornerRadius="3" x:Name="bd">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                            Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#eee"/>
+                                <Setter Property="Foreground" Value="#222" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="Special">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#222" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Roboto" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                    BorderBrush="Transparent" BorderThickness="1" CornerRadius="3" x:Name="bd">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                        Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#333"/>
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
+    <Grid Margin="2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button Click="OnButtonClick" Grid.Column="1" Grid.Row="5">0</Button>
+        <Button Click="OnButtonClick" Grid.Column="0" Grid.Row="4">1</Button>
+        <Button Click="OnButtonClick" Grid.Column="1" Grid.Row="4">2</Button>
+        <Button Click="OnButtonClick" Grid.Column="2" Grid.Row="4">3</Button>
+        <Button Click="OnButtonClick" Grid.Column="0" Grid.Row="3">4</Button>
+        <Button Click="OnButtonClick" Grid.Column="1" Grid.Row="3">5</Button>
+        <Button Click="OnButtonClick" Grid.Column="2" Grid.Row="3">6</Button>
+        <Button Click="OnButtonClick" Grid.Column="0" Grid.Row="2">7</Button>
+        <Button Click="OnButtonClick" Grid.Column="1" Grid.Row="2">8</Button>
+        <Button Click="OnButtonClick" Grid.Column="2" Grid.Row="2">9</Button>
+
+        <Button x:Name="btnClearEntry" Grid.Column="0" Grid.Row="1" Click="btnClearEntry_Click">CE</Button>
+        <Button x:Name="btnClear" Grid.Column="1" Grid.Row="1" Click="btnClear_Click">C</Button>
+        <Button x:Name="btnBackspace" Grid.Column="2" Grid.Row="1" Click="btnBackspace_Click">⌫</Button>
+        <Button x:Name="btnDivide" Grid.Column="3" Grid.Row="1" Click="btnDivide_Click">÷</Button>
+        <Button x:Name="btnTimes" Grid.Column="3" Grid.Row="2" Click="btnTimes_Click">×</Button>
+        <Button x:Name="btnMinus" Grid.Column="3" Grid.Row="3" Click="btnMinus_Click">−</Button>
+        <Button x:Name="btnPlus" Grid.Column="3" Grid.Row="4" Click="btnPlus_Click">+</Button>
+        <Button x:Name="btnEquals" Grid.Column="3" Grid.Row="5" Style="{StaticResource Special}" Click="btnEquals_Click">=</Button>
+        <Button x:Name="btnPoint" Grid.Column="2" Grid.Row="5" Click="btnPoint_Click">.</Button>
+        <Button x:Name="btnPlusMinus" Grid.Column="0" Grid.Row="5" Click="btnPlusMinus_Click">⁺∕₋</Button>
+
+        <TextBox x:Name="tbOut" Grid.ColumnSpan="4" IsReadOnly="True" BorderThickness="0"
+                 TextAlignment="Right" VerticalAlignment="Bottom" FontSize="32"
+                 FontFamily="Roboto" Margin="8" Text="0"/>
+
+    </Grid>
+</Window>
