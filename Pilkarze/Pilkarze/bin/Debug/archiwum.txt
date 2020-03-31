@@ -1,0 +1,5 @@
+Peter|Pedigrew|15|53
+Miłosz|Krystacki|21|69
+Martha|Morrison|32|67
+Wackleson|Chad|24|80
+Bernard|Boward|50|110
